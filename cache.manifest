@@ -1,0 +1,14 @@
+CACHE MANIFEST
+
+# Standard icons
+icon.png
+phone_startup.png
+tablet_startup.png
+
+# CSS etc from resources
+resources/css/ext-touch.css
+
+# Standard JS added below
+rasp_full.js
+
+# version 1
