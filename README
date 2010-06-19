@@ -18,3 +18,12 @@ Data selection
 			. Navigation list
 
 
+
+Other features
+	- Link to Map at same location (need location data against location names)
+	- Auto find the correct location based on your GPS
+
+
+Advanced
+	- Map overlays over Google maps
+

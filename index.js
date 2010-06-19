@@ -1,22 +1,39 @@
 Ext.ns('rasp');
 
+// Find the URL (which server?) - could assume local
+//	XXX add /loc/FCST directories to NETWORK section of MANIFEST
+rasp.ImageURL = function(loc, day, type, time) {
+	var day_prefix = '';
+	// return "http://glidingforecast.on.net/RASP/" 
+	return "local/"
+		+ loc
+		+ "/FCST/"
+		+ day_prefix
+		+ type
+		+ ".curr."
+		+ time
+		+ "lst.d2.png";
+};
+
+// The main application
 rasp.Main = {
     init : function() {
+
+		// --------------------------------------------------
+		// XXX rework as info button
         this.helpButton = new Ext.Button({
-            text: 'Help',
+            text: 'Info',
             ui: 'action',
             hidden: true,
             handler: this.onHelpButtonTap,
             scope: this
         });
-        
         var helpConfig = {
             items: [{
 				html: '<h1>Hello help</h1>'
 			}],
             scroll: 'vertical'
         };
-
         if (!Ext.platform.isPhone) {
             Ext.apply(helpConfig, {
                 width: 500,
@@ -24,11 +41,12 @@ rasp.Main = {
                 floating: true
             });
         }
-                
         this.helpPanel = new Ext.Panel(helpConfig);
         
+		// --------------------------------------------------
+		// Selection and orientatin framework
         this.ui = new Ext.ux.UniversalUI({
-            title: Ext.platform.isPhone ? 'Lode' : 'Real Lode',
+            title: 'RASP', //Ext.platform.isPhone ? 'RASP' : 'Longer RASP',
             navigationItems: RASP.types,
             buttons: [{xtype: 'spacer'}, this.helpButton],
             listeners: {
@@ -38,18 +56,23 @@ rasp.Main = {
 			items: [
 				{
 					cls: 'launchscreen',
-					html: '<div><h1>Really... Welcome to Lode</h1><p>Example code</p><img src="" id="theimage" /></div>'
+					scroll: true,
+					html: '<div><h1>Really... Welcome to RASP</h1><p>Example code</p><img src="" id="theimage" /></div>'
 				}
 			]
         });
     },
     
+	// -------------------------------------------------------
+	// Triggered navigation change
     onNavigate : function(ui, item) {
+		// Set the RASP Image
 		if (item.rasp_id) {
-			// Set the new image !
-			alert(item.rasp_id + ' ' + item.text);
-			Ext.get('theimage').dom.src="http://glidingforecast.on.net/RASP/VIC/FCST/wstar.curr.0900lst.d2.png";
+			// (loc, day, type, time)
+			// XXX - How to make this zoom and scroll able
+			Ext.get('theimage').dom.src = rasp.ImageURL('VIC', 'current', item.rasp_id, '1200');
 		}
+
         if (item.help) {
             if (this.helpButton.hidden) {
                 this.helpButton.show();
@@ -73,6 +96,7 @@ rasp.Main = {
         }
     },
     
+	// XXX rename Info
     onHelpButtonTap : function() {
         if (!Ext.platform.isPhone) {
             this.helpPanel.showBy(this.helpButton.el, 'fade');
@@ -97,6 +121,8 @@ rasp.Main = {
     }
 };
 
+// ----------------------------------------------------------------------
+// Standard application setup
 Ext.setup({
     tabletStartupScreen: 'tablet_startup.png',
     phoneStartupScreen: 'phone_startup.png',
