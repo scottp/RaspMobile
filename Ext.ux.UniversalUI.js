@@ -106,6 +106,12 @@ Ext.ux.UniversalUI = Ext.extend(Ext.Panel, {
        
         this.fireEvent('navigate', this, item, list);
     },
+
+	// Manually fire event
+	fireNavigate: function() {
+		// NOTE: We can't get list here
+        this.fireEvent('navigate', this, this.currentItem);
+	},
     
     onNavButtonTap : function() {
         this.navigationPanel.showBy(this.navigationButton, 'fade');

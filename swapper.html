@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" manifest="cache.manifest">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+	<title>RASP Mobile (debug)</title>
+	<link rel="stylesheet" href="resources/css/ext-touch.css" type="text/css">
+	<link rel="stylesheet" href="rasp.css" type="text/css">
+
+	<script type="text/javascript" src="ext-touch-debug.js"></script>
+	<script type="text/javascript" src="Ext.ux.SingleCarousel.js"></script>
+
+	<script type="text/javascript">
+	
+Ext.setup({
+    tabletStartupScreen: 'tablet_startup.png',
+    phoneStartupScreen: 'phone_startup.png',
+    icon: 'icon.png',
+    glossOnIcon: false,
+    onReady: function() {
+
+        var carousel1 = new Ext.Carousel({
+           defaults: { cls: 'card' },
+           items: [{
+              html: '<h1>Carousel</h1><p>Navigate the two carousels on this page by swiping left/right or clicking on one side of the circle indicators below.</p>'
+          }, {
+              title: 'Tab 2',
+              html: '2'
+          }, {
+              title: 'Tab 3',
+              html: '3'
+          }]
+        });
+
+        var carousel2 = new Ext.ux.SingleCarousel({
+           defaults: { cls: 'card' },
+			indicator: false,
+           items: [{
+              html: '<h1>Carousel</h1><p>Navigate the two carousels on this page by swiping left/right or clicking on one side of the circle indicators below.</p>'
+          }, {
+              title: 'Tab 2',
+              html: '2'
+          }, {
+              title: 'Tab 3',
+              html: '3'
+          }]
+        });
+
+		new Ext.Panel({
+			fullscreen: true,
+			layout: {
+				type: 'vbox',
+				align: 'stretch'
+			},
+				defaults: {
+				flex: 1
+			},
+			items: [
+				carousel1,
+				carousel2,
+			]
+		});
+    }
+});
+
+
+	</script>
+</head>
+<body></body>
+</html>

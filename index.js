@@ -15,9 +15,35 @@ rasp.ImageURL = function(loc, day, type, time) {
 		+ "lst.d2.png";
 };
 
+// ======================================================================
 // The main application
 rasp.Main = {
     init : function() {
+
+		// --------------------------------------------------
+		// Time
+		/*
+		this.timeSpinner = new Ext.form.Select({
+			label: 'Time',
+			hidden: true,
+			options: [
+				// TODO - better configuration
+				{text: '08:00', value: '0800'},
+				{text: '09:00', value: '0900'},
+				{text: '10:00', value: '1000'},
+				{text: '11:00', value: '1100'},
+				{text: '12:00', value: '1200'},
+				{text: '13:00', value: '1300'},
+				{text: '14:00', value: '1400'},
+				{text: '15:00', value: '1500'},
+				{text: '16:00', value: '1600'},
+				{text: '17:00', value: '1700'},
+				{text: '18:00', value: '1800'},
+				{text: '19:00', value: '1900'},
+				{text: '20:00', value: '2000'}
+			]
+		});
+		*/
 
 		// --------------------------------------------------
 		// XXX rework as info button
@@ -48,6 +74,7 @@ rasp.Main = {
         this.ui = new Ext.ux.UniversalUI({
             title: 'RASP', //Ext.platform.isPhone ? 'RASP' : 'Longer RASP',
             navigationItems: RASP.types,
+            // buttons: [this.timeSpinner, {xtype: 'spacer'}, this.helpButton],
             buttons: [{xtype: 'spacer'}, this.helpButton],
             listeners: {
                 navigate : this.onNavigate,
@@ -76,15 +103,17 @@ rasp.Main = {
         if (item.description) {
             if (this.helpButton.hidden) {
                 this.helpButton.show();
+                // this.timeSpinner.show();
                 ui.navigationBar.doComponentLayout();
             }
-			this.codeBox.setValue(Ext.htmlEncode(response.responseText));
+			// XXX this.codeBox.setValue(Ext.htmlEncode(response.responseText));
         }
         else {
             // this.codeBox.setValue('No help for this example.');
             this.helpButton.hide();
+            // this.timeSpinner.hide();
             this.helpActive = false;
-            this.helpButton.setText('Help');
+            this.helpButton.setText('Info');
             ui.navigationBar.doComponentLayout();
         }
     },
@@ -93,20 +122,21 @@ rasp.Main = {
     onHelpButtonTap : function() {
         if (!Ext.platform.isPhone) {
             this.helpPanel.showBy(this.helpButton.el, 'fade');
+            // this.helpPanel.showBy(this.timeSpinner.el, 'fade');
         }
         else {
             if (this.helpActive) {
                 this.ui.setCard(this.ui.currentCard, Ext.platform.isAndroidOS ? false : 'flip');
                 this.helpActive = false;
                 this.ui.navigationBar.setTitle(this.currentTitle);
-                this.helpButton.setText('Help');
+                this.helpButton.setText('Info');
             }
             else {
                 this.ui.setCard(this.helpPanel, Ext.platform.isAndroidOS ? false : 'flip');
                 this.helpActive = true;
                 this.currentTitle = this.ui.navigationBar.title;
-                this.ui.navigationBar.setTitle('Help');
-                this.helpButton.setText('Example');
+                // this.ui.navigationBar.setTitle('Help');
+                this.helpButton.setText('View');
             }
             this.ui.navigationBar.doLayout();
         }

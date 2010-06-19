@@ -18,6 +18,35 @@ var RASP = {
 };
 
 RASP.types = [
+	// Set location
+	{
+		text: "Location",
+		items: [
+			{
+				"location": 'VIC',
+				"text": "Victoria",
+			},
+			{
+				"location": 'QLD',
+				"text": "Queensland",
+			},
+		],
+	},
+
+	// Set day
+	{
+		text: "Day",
+		items: [
+			{
+				"day": 'current',
+				"text": "Today",
+			},
+		],
+	},
+
+	// FUTURE: Path predictions, Maps, Waypoints, etc.
+
+	// Main view parameters
 	{
 		text: "Thermal Parameters",
 		items: [

@@ -13,3 +13,6 @@ build:
 	rm temp.js
 	cp cache.manifest.template cache.manifest
 	echo "# version $(VERSION)" >> cache.manifest
+
+test:
+	jsl.sh $(JAVASCRIPT)
