@@ -5,8 +5,9 @@ icon.png
 phone_startup.png
 tablet_startup.png
 
-# CSS etc from resources
+# CSS etc from resources (TODO: Images etc from resources/?)
 resources/css/ext-touch.css
+rasp.css
 
 # Standard JS added below
 rasp_full.js
