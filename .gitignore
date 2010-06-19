@@ -1,2 +1,4 @@
 rasp_full.js
 local
+*.tar.gz
+.*.swp

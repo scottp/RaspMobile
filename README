@@ -18,6 +18,22 @@ Data selection
 			. Navigation list
 
 
+TODO:
+	- Add a new group on left for "most common"
+	- Add links to flight planner
+	- Add copyright, license, across all
+	- Update all images
+
+BUGS NOW:
+	
+
+
+Viewer
+	- Image should start size of viewer space automatically
+	- Image should be zoomable
+	- Image should allow flicking left/right like Gallery to change TIME
+	- (advanced) images should allow flicking up/down to change type
+
 
 Other features
 	- Link to Map at same location (need location data against location names)
