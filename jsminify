@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+use JavaScript::Minifier qw(minify);
+open(INFILE, shift) or die;
+open(OUTFILE, '>' . shift) or die;
+minify(
+	input => *INFILE, 
+	outfile => *OUTFILE, 
+	copyright => 'Copyright 2010 Scott Penrose scott.dd.com.au. Parts copyright Ext JS. License GNU GPL v3',
+);
+close(INFILE);
+close(OUTFILE);
+
