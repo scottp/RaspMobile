@@ -76,21 +76,32 @@ Ext.ux.UniversalUI = Ext.extend(Ext.Panel, {
             this.navigationPanel.hide();
         }
         
-        if (item.card) {
+        if (item.rasp_id) {
 			/* XXX if item.id
 				- set the right ID for the type of image to display
 				- and fire the navigate
 			 */
-            this.setCard(item.card, item.animation || 'slide');
-            this.currentCard = item.card;
+			// XXX where is setCard?
+            //this.setCard(item.card, item.animation || 'slide');
+            //this.currentCard = item.card;
+
+			// XXX where from
+			this.currentItem = item;
+			this.currentId = item.rasp_id;
+			this.currentTitle = item.text;
+			this.currentDescription = item.description;
+
+			///alert(this.currentId + ' ' + this.currentTitle);
+
             if (item.text) {
                 this.navigationBar.setTitle(item.text);
             }
+
             if (Ext.platform.isPhone) {
                 this.backButton.show();
                 this.navigationBar.doLayout();
             }
-        }     
+        }
        
         this.fireEvent('navigate', this, item, list);
     },

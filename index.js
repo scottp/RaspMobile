@@ -38,13 +38,18 @@ rasp.Main = {
 			items: [
 				{
 					cls: 'launchscreen',
-					html: '<div><h1>Really... Welcome to Lode</h1><p>Example code</p></div>'
+					html: '<div><h1>Really... Welcome to Lode</h1><p>Example code</p><img src="" id="theimage" /></div>'
 				}
 			]
         });
     },
     
     onNavigate : function(ui, item) {
+		if (item.rasp_id) {
+			// Set the new image !
+			alert(item.rasp_id + ' ' + item.text);
+			Ext.get('theimage').dom.src="http://glidingforecast.on.net/RASP/VIC/FCST/wstar.curr.0900lst.d2.png";
+		}
         if (item.help) {
             if (this.helpButton.hidden) {
                 this.helpButton.show();
