@@ -5,7 +5,7 @@ Ext.ns('rasp');
 rasp.ImageURL = function(loc, day, type, time) {
 	var day_prefix = '';
 	// return "http://glidingforecast.on.net/RASP/" 
-	return "local/"
+	return RASPROOT
 		+ loc
 		+ "/FCST/"
 		+ day_prefix

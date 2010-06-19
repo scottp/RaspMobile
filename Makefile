@@ -1,5 +1,3 @@
-CSS=\
-	
 JAVASCRIPT=\
 	ext-touch.js\
 	Ext.ux.UniversalUI.js\
@@ -7,7 +5,7 @@ JAVASCRIPT=\
 	rasp.js\
 	view.js
 
-VERSION=1
+VERSION=2
 
 build:
 	cat $(JAVASCRIPT) > temp.js
@@ -15,6 +13,7 @@ build:
 	rm temp.js
 	cp cache.manifest.template cache.manifest
 	echo "# version $(VERSION)" >> cache.manifest
+	tar cvzf release_$(VERSION).tar.gz index.html rasp_full.js rasp.css resources/
 
 test:
 	jsl.sh $(JAVASCRIPT)
