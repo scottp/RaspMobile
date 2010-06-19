@@ -82,8 +82,9 @@ Ext.ux.UniversalUI = Ext.extend(Ext.Panel, {
 				- and fire the navigate
 			 */
 			// XXX where is setCard?
-            //this.setCard(item.card, item.animation || 'slide');
-            //this.currentCard = item.card;
+			var card = rasp.View;
+            this.setCard(card, item.animation || 'slide');
+            this.currentCard = card;
 
 			// XXX where from
 			this.currentItem = item;

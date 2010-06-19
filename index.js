@@ -57,7 +57,7 @@ rasp.Main = {
 				{
 					cls: 'launchscreen',
 					scroll: true,
-					html: '<div><h1>Really... Welcome to RASP</h1><p>Example code</p><img src="" id="theimage" /></div>'
+					html: '<div><h1>Really... Welcome to RASP</h1><p>Example code</p></div>'
 				}
 			]
         });
@@ -73,19 +73,12 @@ rasp.Main = {
 			Ext.get('theimage').dom.src = rasp.ImageURL('VIC', 'current', item.rasp_id, '1200');
 		}
 
-        if (item.help) {
+        if (item.description) {
             if (this.helpButton.hidden) {
                 this.helpButton.show();
                 ui.navigationBar.doComponentLayout();
             }
-            
-            Ext.Ajax.request({
-                url: item.help,
-                success: function(response) {
-                    // this.codeBox.setValue(Ext.htmlEncode(response.responseText));
-                },
-                scope: this
-            });
+			this.codeBox.setValue(Ext.htmlEncode(response.responseText));
         }
         else {
             // this.codeBox.setValue('No help for this example.');
