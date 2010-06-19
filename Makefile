@@ -9,6 +9,7 @@ VERSION=1
 build:
 	cat $(JAVASCRIPT) > temp.js
 	# XXX Compress javascript
-	cp temp.js rasp_full.js
+	./jsminify temp.js rasp_full.js
+	rm temp.js
 	cp cache.manifest.template cache.manifest
 	echo "# version $(VERSION)" >> cache.manifest
