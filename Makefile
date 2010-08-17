@@ -5,7 +5,7 @@ JAVASCRIPT=\
 	rasp.js\
 	view.js
 
-VERSION=2
+VERSION=3
 
 build:
 	cat $(JAVASCRIPT) > temp.js
